@@ -51,10 +51,10 @@ rails_jwt/auth/sign_up
 
 ## Sign In
 ```html
-rails_jwt/auth/sign_up
+rails_jwt/auth/sign_in
 
 ```
-eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MzQxNzg2MDd9.eJmaV2_fP8P52LiI9tJx_UTI8nTPxepuADz6KYK_Pew
+
 
 
 
