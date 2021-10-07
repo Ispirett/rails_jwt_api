@@ -32,7 +32,7 @@ rails_jwt/auth/sign_up
 ```
 
 ```json
-{ "user":{ "email":"hit@gmail.com", "password": "foobar"}}
+{ "user":{ "email":"hit@gmail.com", "password": "foobar", "password_confirmation": "foobar"}}
 ```
 ##### Response
 ```json
@@ -43,7 +43,6 @@ rails_jwt/auth/sign_up
         "id": 1,
         "email": "hit@gmail.com",
         "created_at": "2021-10-07T02:30:07.894Z",
-        "updated_at": "2021-10-07T02:30:07.894Z"
     },
     "exp": "07 20 73 01:00"
 }
@@ -55,6 +54,21 @@ rails_jwt/auth/sign_in
 
 ```
 
+```json
+{ "user":{ "email":"hit@gmail.com", "password": "foobar"}}
+```
+```json
+{
+    "status": "success",
+    "user": {
+        "id": 4,
+        "email": "test@gmail.com",
+        "created_at": "2021-10-07T17:20:28.592Z"
+    },
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE2MzM2Mjc2MjJ9.HjMN61WlujV9YYLZAQ3Xog53jbPTugwMrq0rxdNL_Qk",
+    "exp": "07-21-73 06:52"
+}
+```
 
 
 

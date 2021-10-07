@@ -1,7 +1,8 @@
-module RailsJwt
-  class ApplicationController < ActionController::Base
-    helper RailsJwt::Engine.helpers
-    # helper RailsJwt::Engine
+require 'active_support/concern'
+
+module ControllerHelpers
+  extend ActiveSupport::Concern
+  included do
     def authorize_user!
       header = request.headers[:AuthToken]
       begin
@@ -16,6 +17,7 @@ module RailsJwt
       end
     end
 
+
     def refresh_jwt_user(token)
       begin
         user_id = Jwt.find_by(token: token).user_id
@@ -29,4 +31,12 @@ module RailsJwt
       end
     end
   end
+
+
+  # module ClassMethods
+  #
+  #
+  # end
+  #
+  # extend ClassMethods
 end

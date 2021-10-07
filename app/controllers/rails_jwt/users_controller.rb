@@ -3,6 +3,7 @@ require_dependency "rails_jwt/application_controller"
 module RailsJwt
   class UsersController < ApplicationController
     skip_before_action :verify_authenticity_token
+    before_action :check_passwords, only: :create
     include JwtSetup
     # gem 'rails_jwt', path:'/Users/ispirett/RubymineProjects/engines/rails_jwt'
 
@@ -12,7 +13,7 @@ module RailsJwt
         token = encode(user_id: @user.id)
         # refactor to allow users to configure
         time =  Time.now +  1.week.from_now.to_i
-        render json: {status: 'success', token: token,user: @user, exp: time.strftime('%m %d %y %H:%M')}, status: :ok
+        render json: {status: 'success', token: token,user: @user.details, exp: time.strftime('%m %d %y %H:%M')}, status: :ok
       else
         render json: {status: :failed, msg: @user.errors.full_messages}, status: :unauthorized
       end
@@ -32,7 +33,7 @@ module RailsJwt
           Jwt.create(user_id: @user.id, token: token)
         end
 
-        render json: {status: :success,user: @user, token:token, exp: time.strftime('%m-%d-%y %H:%M')},status: :ok
+        render json: {status: :success,user: @user.details, token:token, exp: time.strftime('%m-%d-%y %H:%M')},status: :ok
       else
         render json: {status: :failed, msg: 'email or password is incorrect'}, status: :unauthorized
       end
@@ -47,7 +48,15 @@ module RailsJwt
     end
 
     def user_params
-      params.require(:user).permit(:email,:password )
+      params.require(:user).permit(:email,:password, :password_confirmation )
+    end
+
+    def check_passwords
+        if !user_params.include?(:password_confirmation)
+          render json: {status: :failed, msg: "Password confirmation can't be black", status: :unauthorize}
+        elsif user_params[:password] != user_params[:password_confirmation]
+        render json: {status: :failed, msg: "Your passwords do not match." , status: :unauthorize}
+      end
     end
   end
 

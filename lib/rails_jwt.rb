@@ -1,8 +1,10 @@
+require 'rails'
 require "rails_jwt/version"
 require "rails_jwt/engine"
-require 'jwt'
-require 'bcrypt'
+require 'active_support/dependencies'
 
 module RailsJwt
-  # Your code goes here...
+  module Controllers
+    autoload :Helpers, 'rails_jwt/controllers/helpers'
+  end
 end
