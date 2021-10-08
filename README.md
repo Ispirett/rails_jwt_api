@@ -13,7 +13,9 @@ Simple jwt rails authentication
 
 ## Installation
 ```ruby
-gem 'rails_jwt', github: "https://github.com/Ispirett/rails_jwt"
+gem 'rails_javascript_web_tokens', github: "https://github.com/Ispirett/rails_jwt"
+or 
+gem 'rails_javascript_web_tokens'
 ```
 then execute:
 ```bash
