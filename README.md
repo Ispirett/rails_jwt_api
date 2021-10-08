@@ -28,7 +28,7 @@ And then:
 rails db:migrate
 ```
 ## Usage
-* Use authorize_user! helper for authenticate user with token 
+* Use authorize_user! helper for authenticating user with token 
 ```ruby
 :authorize_user!
 ```
