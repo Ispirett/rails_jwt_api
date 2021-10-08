@@ -2,9 +2,9 @@ require_dependency "rails_jwt/application_controller"
 
 module RailsJwt
   class UsersController < ApplicationController
+    include RailsJwt::Controllers::Authentication
     skip_before_action :verify_authenticity_token
     before_action :check_passwords, only: :create
-    include JwtSetup
     # gem 'rails_jwt', path:'/Users/ispirett/RubymineProjects/engines/rails_jwt'
 
     def create

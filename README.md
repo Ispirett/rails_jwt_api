@@ -3,7 +3,13 @@
 ## Work in progress
 Simple jwt rails authentication
 
-## Usage
+## Features
+##### Sign Up
+##### Sign in
+##### Authenticate any Controller action
+##### Refresh Token
+##### Expiration date for token => default 1.month
+
 
 ## Installation
 ```ruby
@@ -20,6 +26,24 @@ And then:
 
 ```bash
 rails db:migrate
+```
+## Usage
+* Use authorize_user! helper for authenticate user with token 
+```ruby
+:authorize_user!
+```
+```ruby
+class TomController < ApplicationController
+before_action :authorize_user!, only: %w(create update)
+end 
+```
+* Use current_user to access the current logged in user
+```ruby
+class TomController < ApplicationController
+  def create
+    current_user.email 
+  end
+end 
 ```
 
 
@@ -57,6 +81,7 @@ rails_jwt/auth/sign_in
 ```json
 { "user":{ "email":"hit@gmail.com", "password": "foobar"}}
 ```
+##### Response
 ```json
 {
     "status": "success",
@@ -70,6 +95,27 @@ rails_jwt/auth/sign_in
 }
 ```
 
+## Request with token
+* Add token user "AuthToken": '.........' in  headers
+```js
+      const api_add_error = async (data) => {
+        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2l.................'
+          try {
+              const response = await fetch('http://example.com/resource',{
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'AuthToken': token
+                  },
+                  body: JSON.stringify(data)
+              });
+              return  await response.json()
+          }
+          catch (e) {
+                 console.log(e)
+          }
+      }
+```
 
 
 ## Contributing

@@ -9,5 +9,6 @@ module RailsJwt
       g.helper false
       g.template_engine false
     end
+    ActionController::Base.send :include, RailsJwt::Controllers::Helpers
   end
 end

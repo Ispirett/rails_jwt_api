@@ -3,8 +3,9 @@ module RailsJwt
   module Controllers
     module Helpers
       extend ActiveSupport::Concern
-      module  ClassMethods
+      include RailsJwt::Controllers::Authentication
 
+      included do
         def authorize_user!
           header = request.headers[:AuthToken]
           begin
@@ -32,6 +33,11 @@ module RailsJwt
             e
           end
         end
+
+        def current_user
+           @current_user
+        end
+
       end
 
     end
