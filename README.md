@@ -1,4 +1,4 @@
-# RailsJwt
+# rails_javascript_web_tokens
 
 ## Work in progress
 Simple jwt rails authentication

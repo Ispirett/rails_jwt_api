@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails_jwt (0.1.0)
+    rails_token_auth (0.1.0)
       bcrypt (~> 3.1.16)
       jwt
       rails (~> 6.1.4, >= 6.1.4.1)
@@ -157,7 +157,7 @@ PLATFORMS
 
 DEPENDENCIES
   pg
-  rails_jwt!
+  rails_token_auth!
 
 BUNDLED WITH
    2.1.4
