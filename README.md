@@ -45,6 +45,28 @@ class TomController < ApplicationController
   end
 end 
 ```
+## User model 
+* This gem creates a user model and handle securing password with bcrypt.
+* After running the gem's install command you will see the code below.
+* The details method is important to the gem.
+* You can add or remove attributes which will affect the response.
+
+```ruby
+def details
+    as_json(only: [:id, :email,:created_at])
+end
+```
+
+## Routes
+* This gem adds routes to your routes file like so.
+* Sign Up /rails_jwt/auth/sign_up
+* Sign In /rails_jwt/auth/sign_in
+
+```ruby
+  mount RailsJwt::Engine => "/rails_jwt", as: :rails_jwt
+```
+
+
 
 
 
