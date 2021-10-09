@@ -2,7 +2,7 @@
 require_relative "lib/rails_jwt/version"
 
 Gem::Specification.new do |spec|
-  spec.name        = "rails-jWt"
+  spec.name        = "rails_jwt_"
   spec.version     = RailsJwt::VERSION
   spec.authors     = ["ispirett"]
   spec.email       = ["ispirett@gmail.com"]
