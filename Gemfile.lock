@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails_javascript_web_tokens (0.1.0)
+    rails-jwt (0.1.0)
       bcrypt (~> 3.1.16)
       jwt
       rails (~> 6.1.4, >= 6.1.4.1)
@@ -157,7 +157,7 @@ PLATFORMS
 
 DEPENDENCIES
   pg
-  rails_javascript_web_tokens!
+  rails-jwt!
 
 BUNDLED WITH
    2.1.4
