@@ -18,7 +18,7 @@ require "action_view/railtie"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-require "rails_jwt"
+require "rails_jwt_api"
 
 module Dummy
   class Application < Rails::Application

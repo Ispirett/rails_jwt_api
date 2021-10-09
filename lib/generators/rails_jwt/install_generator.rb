@@ -3,7 +3,7 @@ module RailsJwt
     source_root File.expand_path('templates', __dir__)
 
     def install_route
-      route 'mount RailsJwt::Engine => "/rails_jwt", as: :rails_jwt'
+      route 'mount RailsJwtApi::Engine => "/rails_jwt_api", as: :rails_jwt_api'
     end
 
     def copy_user_model

@@ -1,4 +1,4 @@
-module RailsJwt
+module RailsJwtApi
   class ApplicationMailer < ActionMailer::Base
     default from: 'from@example.com'
     layout 'mailer'

@@ -1,12 +1,12 @@
 
-require_relative "lib/rails_jwt/version"
+require_relative "lib/rails_jwt_api/version"
 
 Gem::Specification.new do |spec|
   spec.name        = "rails_jwt_api"
-  spec.version     = RailsJwt::VERSION
+  spec.version     = RailsJwtApi::VERSION
   spec.authors     = ["ispirett"]
   spec.email       = ["ispirett@gmail.com"]
-  spec.homepage    = "https://github.com/Ispirett/rails_jwt"
+  spec.homepage    = "https://github.com/Ispirett/rails_jwt_api"
   spec.summary     = "Use jwt with rails no code"
   spec.description = "Integrate jwt in your application with a few simple steps"
   spec.license     = "MIT"
@@ -16,8 +16,8 @@ Gem::Specification.new do |spec|
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/Ispirett/rails_jwt"
-  spec.metadata["changelog_uri"] = "https://github.com/Ispirett/rails_jwt/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/Ispirett/rails_jwt_api"
+  spec.metadata["changelog_uri"] = "https://github.com/Ispirett/rails_jwt_api/CHANGELOG.md"
 
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 

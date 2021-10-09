@@ -1,11 +1,11 @@
-require_dependency "rails_jwt/application_controller"
+require_dependency "rails_jwt_api/application_controller"
 
-module RailsJwt
+module RailsJwtApi
   class UsersController < ApplicationController
-    include RailsJwt::Controllers::Authentication
+    include RailsJwtApi::Controllers::Authentication
     skip_before_action :verify_authenticity_token
     before_action :check_passwords, only: :create
-    # gem 'rails_jwt', path:'/Users/ispirett/RubymineProjects/engines/rails_jwt'
+    # gem 'rails_jwt_api', path:'/Users/ispirett/RubymineProjects/engines/rails_jwt'
 
     def create
       @user = User.new(user_params)

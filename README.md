@@ -22,7 +22,7 @@ then execute:
 $ bundle
 ```
 ```bash
-rails g rails_jwt:install
+rails g rails_jwt_api:install
 ```
 And then:
 
@@ -61,11 +61,11 @@ end
 
 ## Routes
 * This gem adds routes to your routes file like so.
-* Sign Up /rails_jwt/auth/sign_up
-* Sign In /rails_jwt/auth/sign_in
+* Sign Up /rails_jwt_api/auth/sign_up
+* Sign In /rails_jwt_api/auth/sign_in
 
 ```ruby
-  mount RailsJwt::Engine => "/rails_jwt", as: :rails_jwt
+  mount RailsJwtApi::Engine => "/rails_jwt_api", as: :rails_jwt
 ```
 
 
@@ -76,7 +76,7 @@ end
 ##### Sign Up
 
 ```html
-rails_jwt/auth/sign_up
+rails_jwt_api/auth/sign_up
 ```
 
 ```json
@@ -98,7 +98,7 @@ rails_jwt/auth/sign_up
 
 ## Sign In
 ```html
-rails_jwt/auth/sign_in
+rails_jwt_api/auth/sign_in
 
 ```
 

@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount RailsJwt::Engine => "/rails_jwt"
+  mount RailsJwtApi::Engine => "/rails_jwt_api"
 end

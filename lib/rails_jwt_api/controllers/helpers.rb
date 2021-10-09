@@ -1,9 +1,9 @@
 # frozen_string_literal: true
-module RailsJwt
+module RailsJwtApi
   module Controllers
     module Helpers
       extend ActiveSupport::Concern
-      include RailsJwt::Controllers::Authentication
+      include RailsJwtApi::Controllers::Authentication
 
       included do
         def authorize_user!

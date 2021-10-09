@@ -1,4 +1,4 @@
-module RailsJwt
+module RailsJwtApi
   module Controllers
     module Authentication
 

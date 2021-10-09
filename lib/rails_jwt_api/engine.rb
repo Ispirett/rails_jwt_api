@@ -1,6 +1,6 @@
-module RailsJwt
+module RailsJwtApi
   class Engine < ::Rails::Engine
-    isolate_namespace RailsJwt
+    isolate_namespace RailsJwtApi
 
     config.generators do |g|
       g.test_framework :rspec, fixture: false
@@ -9,6 +9,6 @@ module RailsJwt
       g.helper false
       g.template_engine false
     end
-    ActionController::Base.send :include, RailsJwt::Controllers::Helpers
+    ActionController::Base.send :include, RailsJwtApi::Controllers::Helpers
   end
 end
