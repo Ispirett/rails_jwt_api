@@ -1,9 +1,13 @@
-module RailsJwt
+module RailsJwtApi
   class InstallGenerator < Rails::Generators::Base
     source_root File.expand_path('templates', __dir__)
 
     def install_route
       route 'mount RailsJwtApi::Engine => "/rails_jwt_api", as: :rails_jwt_api'
+    end
+
+    def generate_config_file
+      copy_file "rails_jwt_api.rb", "config/initializers/rails_jwt_api.rb"
     end
 
     def copy_user_model

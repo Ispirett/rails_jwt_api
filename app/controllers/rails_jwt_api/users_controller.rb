@@ -12,7 +12,7 @@ module RailsJwtApi
       if @user.save
         token = encode(user_id: @user.id)
         # refactor to allow users to configure
-        time =  Time.now +  1.week.from_now.to_i
+        time =  Time.now +  RailsJwtApi.token_expiration.to_i
         render json: {status: 'success', token: token,user: @user.details, exp: time.strftime('%m %d %y %H:%M')}, status: :ok
       else
         render json: {status: :failed, msg: @user.errors.full_messages}, status: :unauthorized

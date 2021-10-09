@@ -2,9 +2,9 @@ module RailsJwtApi
   module Controllers
     module Authentication
 
-      SECRET_KEY =  ENV.fetch("RAILS_JWT_TOKEN", 'development')
+      SECRET_KEY =  ENV.fetch("RAILS_JWT_TOKEN",RailsJwtApi.token_secret_key)
       # TODO refactor to allow users to ad there own expiration date
-      def encode(payout, exp = 1.month.from_now)
+      def encode(payout, exp = RailsJwtApi.token_expiration)
         payout[:exp] = exp.to_i
         JWT.encode(payout, SECRET_KEY)
     
