@@ -1,9 +1,6 @@
 module RailsJwtApi
   module Controllers
     module Authentication
-
-
-      # TODO refactor to allow users to ad there own expiration date
       def encode(payout, exp = RailsJwtApi.token_expiration)
         payout[:exp] = exp.to_i
         JWT.encode(payout, RailsJwtApi.token_secret_key)
