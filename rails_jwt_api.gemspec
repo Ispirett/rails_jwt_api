@@ -27,5 +27,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'jwt'
   spec.add_dependency 'bcrypt', '~> 3.1.16'
   spec.add_dependency 'rspec'
+  spec.add_dependency 'twilio-ruby'
 
 end
