@@ -6,6 +6,7 @@ module  RailsJwtApi
     include RailsJwtApi::Controllers::PhoneVerification
     skip_before_action :verify_authenticity_token
     before_action :check_passwords, only: :create
+    before_action :phone_valid?, only: :create
     # gem 'rails_jwt_api', path:'/Users/ispirett/RubymineProjects/engines/rails_jwt'
 
     def create
@@ -76,6 +77,12 @@ status: :ok
       params.require(:user).permit(:phone,:email,:password, :password_confirmation )
     end
 
+    def phone_valid?
+      return if RailsJwtApi.phone_verification == false
+      unless Phonelib.valid?(params[:user][:phone])
+      render json: {status: :failed, msg: "You phone number should follow this structure 12124567890 "}
+      end
+    end
     def check_passwords
         if !user_params.include?(:password_confirmation)
           render json: {status: :failed, msg: "Password confirmation can't be black", status: :unauthorize}

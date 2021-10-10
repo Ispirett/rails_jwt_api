@@ -28,5 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'bcrypt', '~> 3.1.16'
   spec.add_dependency 'rspec'
   spec.add_dependency 'twilio-ruby'
+  spec.add_dependency 'phonelib', '~> 0.6.53'
 
 end

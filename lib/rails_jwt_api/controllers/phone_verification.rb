@@ -12,7 +12,7 @@ module RailsJwtApi
         message = @client.messages.create(
           body: body,
           to: to, # Replace with your phone number
-          from: RailsJwtApi.magic_number = '+12489709341')  # Use this Magic Number for creating SMS
+          from: RailsJwtApi.magic_number)  # Use this Magic Number for creating SMS
           puts message.sid
       end
 
