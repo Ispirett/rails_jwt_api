@@ -33,9 +33,10 @@ status: :ok
       user =  User.find_by(id: params[:user_id])
       if user
         if user.verification_number == params[:verification_number]
-          token = encode(user_id: @user.id)
+          token = encode(user_id: user.id)
           time =  Time.now +  RailsJwtApi.token_expiration.to_i
-          render json: {status: 'success', token: token,user: @user.details, exp: time.strftime('%m %d %y %H:%M')}, status: :ok
+          user.update(verification_number: nil)
+          render json: {status: 'success', token: token,user: user.details, exp: time.strftime('%m %d %y %H:%M')}, status: :ok
         else
           initialize_verification(user)
         end
@@ -94,7 +95,7 @@ status: :ok
     def initialize_verification(user)
       random_number = generate_random_number
       user.update(verification_number: random_number)
-      send_message(body: "Here is you verification code #{random_number}", to: user.details.phone)
+      send_message(body: "Here is you verification code #{random_number}", to: '18683292484')
       render json: {status: 'success', user: user.details, msg: "Please verify phone number"}, status: :ok
     end
   end
