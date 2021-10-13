@@ -8,7 +8,9 @@ Simple jwt rails authentication
 ##### Sign in
 ##### Authenticate any Controller action
 ##### Refresh Token
-##### Expiration date for token => default 1.month
+##### Expiration date for token => default 2.weeks
+##### Phone verification using twilio
+
 
 
 ## Installation
@@ -140,6 +142,80 @@ rails_jwt_api/auth/sign_in
           }
       }
 ```
+
+##Phone Verification
+##### Phone verification sends a 5 digit number to the number of the user.
+* To enable phone verification edit the rails_jwt_api.rb in the initializers folder.
+  
+```ruby
+# Twilio configuration
+  config.phone_verification = true # default: false
+  # config.account_sid # default: Rails.application.credentials.dig(:twilio, :account_sid)
+  # config.auth_token #  Rails.application.credentials.dig(:twilio, :auth_token)
+  config.magic_number   # Rails.application.credentials.dig(:twilio, :magic_number)
+  # config.verification_length = 5  # The length of the verification code
+```
+* Configure twilio configuration in you credentials file like so
+```bash
+EDITOR="code --wait" rails:credentials edit --environment development
+*Note you can also use ENV instead by replacing the configs in the inintialzer file.
+```
+```yaml
+twilio:
+  account_sid: rerreqereqreqfdafdfd
+  auth_token:  fdfadffdfjereqwrq
+  magic_number: +2132545454
+```
+
+## Request and Response phone verification
+* Sign Up
+```url
+    http://localhost:3000/rails_jwt_api/auth/sign_up
+```
+*POST
+```json
+{ "user":{ "phone": "18683292490","email":"le@gmail.com", 
+  "password": "12345678", "password_confirmation": "12345678"}
+}
+```
+* User receives code
+```json
+{
+    "status": "success",
+    "user": {
+        "id": 1,
+        "email": "boo@gmail.com",
+        "created_at": "2021-10-13T19:49:25.178Z"
+    },
+    "msg": "Please verify phone number"}
+```
+
+* Verify Phone
+
+```url
+http://localhost:3000/rails_jwt_api/auth/verify_phone
+```
+*POST
+```json
+{"user_id":"32", "verification_number": "70840"}
+```
+* Return user and token
+```json
+    {
+  "status": "success",
+  "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozNCwiZXhwIjoxNjM1MzY0MTE0fQ.D6NGW88tR6TlVz587Dbw9uFUHktX2HCFCtKCccb27i8",
+  "user": {
+    "id": 1,
+    "email": "boo@gmail.com",
+    "created_at": "2021-10-13T19:49:25.178Z"
+  },
+  "exp": "08 09 73 11:46"
+}
+```
+
+
+
+
 
 
 ## Contributing
